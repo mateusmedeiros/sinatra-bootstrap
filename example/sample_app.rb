@@ -1,3 +1,5 @@
+## OLD. TO BE REVAMPED. ##
+
 require 'sinatra/base'
 require 'sinatra/twitter-bootstrap'
 require 'haml'

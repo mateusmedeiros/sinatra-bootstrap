@@ -1,5 +1,3 @@
-require_relative './helpers/haml_helpers'
-
 module Sinatra
   module Twitter
     module Bootstrap
@@ -7,27 +5,38 @@ module Sinatra
       module Assets
 
         ASSETS = {
-          :css => [
-            ['bootstrap.min.css', 'a5cee949f15193b2e2f9aa7275051dea69d0eea1'],
-            ['bootstrap-responsive.min.css', '68e924c9fcbee3cb5d47ca6d284fb3eec82dd304'],
+          css: [
+            ['bootstrap.min.css', 'cde1a9a9098238450afb8fccfce94c22fa2743e3']
           ],
-          :png => [
-            ['glyphicons-halflings.png', '84f613631b07d4fe22acbab50e551c0fe04bd78b'],
-            ['glyphicons-halflings-white.png', '9bbc6e9602998a385c2ea13df56470fd']
+          default_js: [
+            ['jquery.min.js', '0511abe9863c2ea7084efa7e24d1d86c5b3974f1'],
+            ['bootstrap.min.js', '75a42212affc118fef849aba4b9326a7da2acda1']
           ],
-          :js => [
-            ['jquery.min.js', '8b6babff47b8a9793f37036fd1b1a3ad41d38423'],
-            ['bootstrap.min.js', '3e6ab2b64de4239acb763383a591d76a44053293'],
-            ['html5.js', 'c9d8ca77abcd9789b91b4c3263f257e1fc1ee103']
+          legacy_js: [
+            ['html5.js', 'c9d8ca77abcd9789b91b4c3263f257e1fc1ee103'],
+            ['respond.min.js', '301398aa216be8655b976ba153d299c2c54a73d4']
           ],
+          fonts: [
+            ['glyphicons-halflings-regular.eot', 'd53dff38dfb5c414015dfb31d30a473c95b50904'],
+            ['glyphicons-halflings-regular.svg', '796e58aedfcfe8a3b0829bc0594f739936a9d7d0'],
+            ['glyphicons-halflings-regular.ttf', 'c427041d38cd6597ae7e758028ab72756849ec26'],
+            ['glyphicons-halflings-regular.woff','c707207e52ffe555a36880e9873d146c226e3533']
+          ]
         }
+
+        def self.css_tag(url, attrb = '')
+          "<link rel='stylesheet' type='text/css' #{attrb} href='#{url}'>\n"
+        end
+
+        def self.js_tag(url, attrb = '')
+          "<script type='text/javascript' #{attrb} src='#{url}'></script>\n"
+        end
 
         def self.generate_bootstrap_asset_routes(app)
           ASSETS.each do |kind, files|
             files.each do |file|
               name, sha1 = file
-              kind_route = (kind == :png) ? :img : kind
-              app.get '/%s/%s' % [kind_route.to_s, name], :provides => kind do
+              app.get '/%s/%s' % [kind.to_s.split('_').last, name], :provides => name.split('.').last do
                 cache_control :public, :must_revalidate, :max_age => 3600
                 etag sha1
                 File.read(File.join(File.dirname(__FILE__), 'assets', name))
@@ -39,33 +48,49 @@ module Sinatra
         def self.registered(app)
           generate_bootstrap_asset_routes(app)
           app.helpers AssetsHelper
-          app.helpers HAMLHelper
         end
 
       end
 
       module AssetsHelper
 
-        def bootstrap_css
-          output = '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
-          Assets::ASSETS[:css].each do |file, _|
-            output += '<link rel="stylesheet" media="screen, projection" type="text/css" href="%s">' % url('/css/%s' % file)
-          end
-          output
-        end
-
-        def bootstrap_js
+        def bootstrap_css(meta = true, attrb = '')
           output = ''
-          Assets::ASSETS[:js].each do |file, _|
-            output += '<!--[if lt IE 9]>' if file == 'html5.js'
-            output += '<script type="text/javascript" src="%s"></script>' % url('/js/%s' % file)
-            output += '<![endif]-->' if file == 'html5.js'
+          output += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" if meta
+
+          Assets::ASSETS[:css].each do |file, _|
+            output += Assets::css_tag url('/css/%s' % file, attrb) 
           end
-          output
+
+          output.chomp
         end
 
-        def bootstrap_assets
-          bootstrap_css + bootstrap_js
+        def bootstrap_js_legacy(attrb = '')
+          output = ''
+
+          Assets::ASSETS[:legacy_js].each do |file, _|
+            output += Assets::js_tag url('/js/%s' % file, attrb)
+          end
+
+          "<!--[if lt IE 9]> \n#{output.chomp} \n<![endif]-->"
+        end
+
+        def bootstrap_js_default(attrb = '')
+          output = ''
+
+          Assets::ASSETS[:default_js].each do |file, _|
+            output += Assets::js_tag url('/js/%s' % file, attrb)
+          end
+
+          output.chomp
+        end
+
+        def bootstrap_js(attrb = '')
+          "#{bootstrap_js_legacy(attrb)} \n#{bootstrap_js_default(attrb)}"
+        end
+
+        def bootstrap(attrb = '')
+          "#{bootstrap_css(attrb)} \n#{bootstrap_js_legacy(attrb)} \n#{bootstrap_js_default(attrb)}"
         end
 
       end
