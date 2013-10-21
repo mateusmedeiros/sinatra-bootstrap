@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = [
     "README.md"
   ]
+  s.licenses = ['Apache-2.0', 'WTFPL']
   s.files = [ 'lib/sinatra/bootstrap.rb' ]
   s.files += [ 'lib/sinatra/bootstrap/helpers.rb' ]
   s.files += Dir['lib/sinatra/assets/*']
