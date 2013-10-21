@@ -62,7 +62,7 @@ module Sinatra
         output += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" if meta
 
         Assets::ASSETS[:css].each do |file, _|
-          output += Assets::css_tag url('/css/%s' % file, attrb) 
+          output += Assets::css_tag url('/css/%s' % file), attrb 
         end
 
         output.chomp
@@ -72,7 +72,7 @@ module Sinatra
         output = ''
 
         Assets::ASSETS[:legacy_js].each do |file, _|
-          output += Assets::js_tag url('/js/%s' % file, attrb)
+          output += Assets::js_tag url('/js/%s' % file), attrb
         end
 
         "<!--[if lt IE 9]> \n#{output.chomp} \n<![endif]-->"
@@ -82,7 +82,7 @@ module Sinatra
         output = ''
 
         Assets::ASSETS[:default_js].each do |file, _|
-          output += Assets::js_tag url('/js/%s' % file, attrb)
+          output += Assets::js_tag url('/js/%s' % file), attrb
         end
 
         output.chomp
