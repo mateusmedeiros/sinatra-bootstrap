@@ -12,6 +12,12 @@ __END__
 @@ index
 <html>
   <head>
+    <%- # Note that all the include helpers are here to demonstrate how they work, -%>
+    <%- # but only a few of them (or just bootstrap) should be used at the same time, or else you will end up with duplicated includes -%>
+    <%= bootstrap %>
+    <%= bootstrap_css false, "attribute='foo'"%>
+    <%= bootstrap_js_legacy %>
+    <%= bootstrap_js %>
   </head>
   <body>
     <% container :div do %>
@@ -26,5 +32,6 @@ __END__
         <% end %>
       <% end %>
     <% end %>
+    <%= bootstrap_js_default %>
   </body>
 </html>
