@@ -1,4 +1,3 @@
-
 sinatra-bootstrap
 =================
 
@@ -7,7 +6,7 @@ This is a fork of sinatra-twitter-bootstrap by mfojtik. Which you can check out 
 When I found it it was exactly what I was looking for, but I wanted bootstrap 3, so I made this fork just to bump the bootstrap and do a pull-request.
 Bootstrap 3 was significantly different though, so I ended up having to do a major revamp of the code, tweaking it for my needs in the process. 
 
-Because of that, I decided to keep this fork separated, at least for now. He can feel free to pull this to a branch or use it as a base for his implementation or whatever (you can do that as well, whoever you are).
+Because of that, I decided to keep this fork separated, at least for now. mfojtik can feel free to pull this to a branch or use it as a base for his implementation or whatever (you can do that as well, whoever you are). This is licensed under [WTFPL](http://www.wtfpl.net/txt/copying/) for a reason.
 
 What it does right now?
 -----------------------
@@ -43,7 +42,15 @@ If you don't use bundler (like me):
 gem install sinatra-bootstrap
 ```
 
-then you should add this to your application main file (the one where you require sinatra)
+and don't forget to require it
+
+```ruby
+require 'sinatra/bootstrap'
+```
+
+#### Finally
+
+you should add this to your application main file (the one where you require sinatra)
 
 ```ruby
 register Sinatra::Bootstrap::Assets
@@ -51,11 +58,7 @@ register Sinatra::Bootstrap::Assets
 
 (put it inside your application block if you're using the modular style)
 
-and don't forget to require it
 
-```ruby
-require 'sinatra/bootstrap'
-```
 
 
 Overview
