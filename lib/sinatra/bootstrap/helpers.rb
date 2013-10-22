@@ -3,6 +3,9 @@ module Sinatra
     module Helpers
               
       def cols(tag, attrb = {}, &block)
+        attrb[:cols] = attrb[:c] || attrb[:cols]
+        attrb[:offset] = attrb[:o] || attrb[:cols]
+
         cols = attrb[:cols] || ''
         offset = attrb[:offset] || ''
         extr_class = attrb[:class].nil? ? '' : " #{attrb[:class]}"

@@ -114,7 +114,8 @@ Will result in the following html:
 </html>
 ```
 
-I made the cols helper the shortest I could (very soon I'll add the option to use just c: and o: instead of cols: and offset: to make it even shorter).
+I made the cols helper the shortest I could.
+NOTE: You can also use `c: "a2b2", o: "a2b2"` instead of `cols: "a2b2", offset: "a2b2"` if you want it even shorter. 
 
 The way you use the cols and offsets is "aXXbXXcXXdXX". 
 "a" is equivalent to "xs", "b" to "sm", "c" to "md" and "d" to "lg".
