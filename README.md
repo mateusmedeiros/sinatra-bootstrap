@@ -48,17 +48,13 @@ and don't forget to require it
 require 'sinatra/bootstrap'
 ```
 
-#### Finally
+#### Modular
 
-you should add this to your application main file (the one where you require sinatra)
+If you're using the modular style with sinatra, add this to your application block
 
 ```ruby
 register Sinatra::Bootstrap::Assets
 ```
-
-(put it inside your application block if you're using the modular style)
-
-
 
 
 Overview

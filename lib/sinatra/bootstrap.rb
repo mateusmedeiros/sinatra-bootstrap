@@ -98,4 +98,6 @@ module Sinatra
 
     end
   end
+
+  register Bootstrap::Assets
 end
