@@ -1,3 +1,9 @@
+NOTE
+=================
+Well, so I forked this and tweaked it to my needs at the moment and had intentions to do a lot of extra things to make it useful for everyone (TO-DO section). I still intend to do all that stuff, but I'm completely freaking out of time so, after 7 months, I decided to add this note to anyone that might read this. 
+
+I have more experience with Sinatra now and had some plans to refactor this, I'll do that as soon as I find some time. I have no idea when will that be though. Hopefully it will be soon.
+
 sinatra-bootstrap
 =================
 
@@ -138,11 +144,10 @@ TO-DO
  * ~~Rework include helpers~~
  * ~~Add helpers for cols~~
  * Correct stuff about licenses
- * Add RSpec tests
+ * Add RSpec tests (and then start to develop new things with TDD)
  * Add support for other template engines (right now only ERB and HAML are supported)
  * Add Rdoc
  * Finish wiki
- * Completely correct any indentation problem for all template engines
  * Add some more content helpers
 
 
