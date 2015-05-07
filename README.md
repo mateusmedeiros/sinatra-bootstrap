@@ -1,6 +1,6 @@
 NOTE
 =================
-Well, so I forked this and tweaked it to my needs at the moment and had intentions to do a lot of extra things to make it useful for everyone (TO-DO section). I still intend to do all that stuff, but I'm completely freaking out of time so, after 7 months, I decided to add this note to anyone that might read this. 
+Well, so I forked this and tweaked it to my needs at the moment and had intentions to do a lot of extra things to make it useful for everyone (TO-DO section). I still intend to do all that stuff, but I'm completely out of time, so, after 7 months, I decided to add this note to anyone that might read this. 
 
 I have more experience with Sinatra now and had some plans to refactor this, I'll do that as soon as I find some time. I have no idea when will that be though. Hopefully it will be soon.
 
@@ -12,7 +12,7 @@ This is a fork of sinatra-twitter-bootstrap by mfojtik. Which you can check out 
 When I found it it was exactly what I was looking for, but I wanted bootstrap 3, so I made this fork just to bump the bootstrap and do a pull-request.
 Bootstrap 3 was significantly different though, so I ended up having to do a major revamp of the code, tweaking it for my needs in the process. 
 
-Because of that, I decided to keep this fork separated, at least for now. mfojtik can feel free to pull this to a branch or use it as a base for his implementation or whatever (you can do that as well, whoever you are). This is licensed under [WTFPL](http://www.wtfpl.net/txt/copying/) for a reason.
+Because of that, I decided to keep this fork separated, at least for now. mfojtik can feel free to pull this to a branch or use it as a base for his implementation or whatever (you can do that as well, whoever you are).
 
 What it does right now?
 -----------------------
@@ -42,7 +42,7 @@ As noted in [Bundler setup](http://bundler.io/bundler_setup.html), you will prob
 
 #### Non-bundler
 
-If you don't use bundler (like me):
+If you don't use bundler:
 
 ```bash
 gem install sinatra-bootstrap
@@ -120,7 +120,7 @@ Will result in the following html:
 </html>
 ```
 
-I made the cols helper the shortest I could.
+I made the cols helper the shortest I could. I'll soon add the usual syntax though.
 NOTE: You can also use `c: "a2b2", o: "a2b2"` instead of `cols: "a2b2", offset: "a2b2"` if you want it even shorter. 
 
 The way you use the cols and offsets is "aXXbXXcXXdXX". 
@@ -158,13 +158,11 @@ License
 sinatra-twitter-bootstrap is licensed under Apache Software License 2.0 (ASLv2)
 http://www.apache.org/licenses/LICENSE-2.0.txt
 
-Bootstrap is licenced under Apache Software License 2.0 (ASLv2) (though 3.1 will be under MIT, thanks god)
+Bootstrap 3.0 is licensed under Apache Software License 2.0 (ASLv2) 
 http://www.apache.org/licenses/LICENSE-2.0.txt
 
-JQuery is licenced under MIT license.
+JQuery is licensed under MIT license.
 html5Shiv is licenced under MIT/GPL2 (https://github.com/aFarkas/html5shiv)
 
-Any code added by me is licensed under WTFPL, so you can DO WHAT THE F... YOU WANT with it
-http://www.wtfpl.net/txt/copying/
-
-
+Any code added by me is licensed under MIT
+[LICENSE](LICENSE)
